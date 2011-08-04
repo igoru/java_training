@@ -31,10 +31,10 @@ public void find (File search_folder)
 				if ((folder_list[file_index].isDirectory())&& (!folder_list[file_index].getName().equals("System Volume Information")) && (!folder_list[file_index].getName().equals(".."))&& (!folder_list[file_index].getName().equals(".")))
 				{
 					//Oleh: Why do you need this system.out?
-					/*Igor: In origin code I did not this output. But during searching in huge folder
-					for example in C:\ it is not clear "Ip the program work correct or some stuck happened.
-					Therefore I set hear this redundant out. Fixed.
-					*/
+					/*Igor: In origin code I did not this output. But during searching in huge
+                                                      folder for example in C:\ it is not clear "Is the program work correct
+                                                      or some stuck happened. Therefore I set hear this redundant output.
+                                                      Fixed.
 					//System.out.println(folder_list[file_index].getPath());
 					find(folder_list[file_index]);
 				}
