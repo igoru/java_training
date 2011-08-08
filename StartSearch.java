@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 //Please read these official Java naming conventions: http://www.oracle.com/technetwork/java/codeconventions-135099.html#367
 //Igor: Fixed
 public class StartSearch {
+
 	public static void main (String args[]){
 		//Opening curly bracket should be on the same line as header statement.
 		//Igor Fixed
@@ -31,11 +32,14 @@ public class StartSearch {
 				//Igor: Done
 				if (rootDirectory.exists()){
 					if (rootDirectory.isDirectory()){
+//Oleh: Usually it is better to name variables, fields and classes as noun. In this case it would be "fileFinder"
 						FileSearch runSearch = new FileSearch();
 						System.out.println("Input file name to search:");
+//Oleh: spaces around " = "
 						fileName=input.readLine();
 						runSearch.searchingFiles.add(fileName);
 						while (!addFile.equals("n"))	{
+//Oleh: another (typo)
 							System.out.println("Do you want input aonother file(s) to search(y/n)?[y]");
 							addFile = input.readLine();
 					
@@ -46,7 +50,9 @@ public class StartSearch {
 								addFile = "y";
 							}
 							else
+//Oleh: Always use curly brackets even if there is only one operator after it. This is a holy rule.
 								if (!addFile.equals("n"))
+//Oleh: Why wrong?
 									System.out.println("Wrong choice!!!");
 									
 				}
@@ -55,6 +61,7 @@ public class StartSearch {
 						System.out.println("---------------FOUND FILES---------------");
 						runSearch.printResults();
 					}
+//Oleh: "else" should go on the same line as closing bracket, i.e. "} else {" or "} else if (...) {"
 					else
 						System.out.println("Spesified path is not folder");
 				}
@@ -65,6 +72,7 @@ public class StartSearch {
 				
 			}
 			catch (IOException e)
+//Oleh: bracket should be on the same line
 			{
 				System.out.println(e.getMessage());
 				
