@@ -2,15 +2,27 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.FileFilter;
 import java.util.*;
+
+//Oleh: it is usually better to name classes as nouns. In this case something like "FileFinder" suits best.
 public class FileSearch {
 	//Initialization collection with found files 
 	//class to filter required files
+
+//Oleh: maybe better to name filenameFilter
 	private FilenameFilter searchFilter;
+
+//Oleh: "isFolder is a good name for the boolean flag. in this case it would be better to name it folderFilter
 	private FileFilter isFolder;
 	//Initialization collection with list of searching files
+
+//Oleh: We will discuss generics soon. This is ok for now.
 	private TreeSet foundFiles = new TreeSet();
 	public TreeSet searchingFiles = new TreeSet();
+
+//Oleh: "ignore folders" is imperative voice. "IGNORED_FOLDERS" is a noun which is better.
 	private final static TreeSet IGNORE_FOLDERS = new TreeSet();
+
+//Oleh: static initializer. good.
     static {
     	IGNORE_FOLDERS.add("System Volume Information");
     	IGNORE_FOLDERS.add(".");
@@ -18,6 +30,9 @@ public class FileSearch {
 	}
 
 	public void findFiles (File search_folder)	{
+//Oleh: camel case searchFolder (or maybe roorFolder?)
+
+//Oleh: spaces around " = " 
 		searchFilter=new FileFilterer(searchingFiles);
 		isFolder=new FolderFilter(IGNORE_FOLDERS);
 		
@@ -27,11 +42,14 @@ public class FileSearch {
 		//Igor: Done.
 				File[] fileList = search_folder.listFiles(searchFilter);
 				File[] folderList = search_folder.listFiles(isFolder);
-				
+			
+//Oleh: for (File file : filelList) {	
 				for(int file_index = 0;file_index<fileList.length;file_index++)	{
 								
 					foundFiles.add(fileList[file_index].getPath());
 				}
+
+//Oleh: for (File directory : folderList) {
 				for(int file_index = 0;file_index<folderList.length;file_index++)	{
 					//Oleh: Move all these checks to special DirectoryFilter implements FileFilter. And move "special" string to constants.
 					//Igor. Done.
