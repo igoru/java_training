@@ -31,7 +31,7 @@ public class SearchConsole {
 				
 						if((addFile.isEmpty()) || (addFile.equals("y"))){
 							System.out.println("Input file name to search:");
-							fileName=input.readLine();
+							fileName = input.readLine();
 							fileFinder.searchingFiles.add(fileName);
 							addFile = "y";
 						}else {
