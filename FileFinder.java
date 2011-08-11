@@ -43,7 +43,7 @@ public class FileFinder {
 		filenameFilter = new FileFilterer(searchingFiles);
 		folderFilter = new FolderFilter(IGNORED_FOLDERS);
 		File[] fileList = rootFolder.listFiles(filenameFilter);
-		File[] folderList =rootFolder.listFiles(folderFilter);
+		File[] folderList = rootFolder.listFiles(folderFilter);
 		TreeSet fileSet = new TreeSet();
 //Oleh: for (File file : filelList) {
 //Igor: Fixed
@@ -70,7 +70,7 @@ public class FileFinder {
 			filesSet=(TreeSet)filemapEntry.getValue();
 			//System.out.println(filemapEntry.getValue());
 			for(Object fileObj :filesSet){
-				File file=(File)fileObj;
+				File file = (File)fileObj;
 				System.out.println(file.getName());
 				
 			}
