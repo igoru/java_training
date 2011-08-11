@@ -22,6 +22,7 @@ public class FileFinder {
 	//private TreeSet foundFiles = new TreeSet();
 	private HashMap foundFiles = new HashMap();
 	public TreeSet searchingFiles = new TreeSet();
+	
 
 //Oleh: "ignore folders" is imperative voice. "IGNORED_FOLDERS" is a noun which is better.
 //Igor: Done
@@ -38,33 +39,43 @@ public class FileFinder {
 //Oleh: camel case searchFolder (or maybe roorFolder?)
 //Igor: Done
 		
-
+		
 		filenameFilter = new FileFilterer(searchingFiles);
 		folderFilter = new FolderFilter(IGNORED_FOLDERS);
-		
-				File[] fileList = rootFolder.listFiles(filenameFilter);
-				File[] folderList =rootFolder.listFiles(folderFilter);
-				
-			
+		File[] fileList = rootFolder.listFiles(filenameFilter);
+		File[] folderList =rootFolder.listFiles(folderFilter);
+		TreeSet fileSet = new TreeSet();
 //Oleh: for (File file : filelList) {
 //Igor: Fixed
-				for (File file : fileList) {
-					//foundFiles.add(file.getPath());
-					foundFiles.put(file.getPath(), file.getName());
-				}
+		//for (File file : fileList) {
+		fileSet.addAll(Arrays.asList(fileList));
+		foundFiles.put(rootFolder, fileSet);
+		//}
 
 //Oleh: for (File directory : folderList) {
 //Igor: Fixed				
-				for (File directory : folderList) {
-					findFiles(directory);
-				}
+		for (File directory : folderList) {
+			findFiles(directory);
+					
+		}
 		
 	}
 		public void printResults ()	{
-		//for (Object fileName : foundFiles)	{
-			System.out.println(foundFiles.toString());
-			
-		//}
+		TreeSet filesSet = new TreeSet();
+		Set fileKeys = foundFiles.entrySet();
+		Iterator iter =  fileKeys.iterator();
+		while (iter.hasNext())	{
+			Map.Entry filemapEntry = (Map.Entry)iter.next();
+			System.out.println("In folder \""+filemapEntry.getKey()+ "\" found file(s):");
+			filesSet=(TreeSet)filemapEntry.getValue();
+			//System.out.println(filemapEntry.getValue());
+			for(Object fileObj :filesSet){
+				File file=(File)fileObj;
+				System.out.println(file.getName());
+				
+			}
+					
+		}
 	  }
 		/* Implementation of filter class. This class is used to filter required files
 		 * in current folder*/
@@ -80,7 +91,7 @@ class FileFilterer implements FilenameFilter{
 class FolderFilter implements FileFilter{
 	private TreeSet fileNames;
 	public FolderFilter(TreeSet fileNames){
-		this.fileNames = fileNames;
+				this.fileNames = fileNames;
 		}
 	
 	public boolean accept(File fileName) {

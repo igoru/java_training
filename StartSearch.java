@@ -18,7 +18,7 @@ public class StartSearch {
 //Oleh: Usually it is better to name variables, fields and classes as noun. In this case it would be "fileFinder"
 //Igor: done						
 						FileFinder fileFinder = new FileFinder();
-						System.out.println("Input file name to search:");
+						System.out.println("Input file name to find:");
 //Oleh: spaces around " = "
 //Igor: Fixed						
 						fileName = input.readLine();
@@ -39,7 +39,10 @@ public class StartSearch {
 //Igor: Fixed								
 									if (!addFile.equals("n")){
 //Oleh: Why wrong?
-										System.out.println("Wrong choice!!!");
+//Igor: This message appears when user set neither "y" no "n"
+//added additional explanation in mw\essage  										
+										//System.out.println("Wrong choice!!!");
+										System.out.println("Wrong choice!!! Should be \"y\" or \"n\"");
 									}
 								}
 									
